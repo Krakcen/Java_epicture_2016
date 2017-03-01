@@ -1,3 +1,17 @@
 <resources>
-    <string name="app_name">Java_epicture_2016</string>
+    <string name="app_name">Epicture</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="imgur_browse">Browse Imgur Images</string>
+    <string name="flickr_browse">Browse Flickr Images</string>
+
+    <string name="search_hint">Search...</string>
+
+    <string name="aboutStr">photo finder and browsing application\n\nFlickr and Imgur API implementation\nConnecting to the Flickr and Imgur platforms\nFlickr and Imgur photo finder\nUploading photos to Flickr and Imgur</string>
+    <string name="aboutStrContact">hugo.villevieille@epitech.eu\nmarceau.bernelin@epitech.eu\nkhallil.doudou@epitech.eu</string>
+
+    <string name="welcomeText">This is the Epicture project from EPITECH Mobile Java Module, go to the About tab for more information. Thanks for using and enjoy !</string>
 </resources>
