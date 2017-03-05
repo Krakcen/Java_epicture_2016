@@ -1,4 +1,4 @@
-package com.villevh.java_epicture_2016.fragments;
+package com.villevh.java_epicture_2016.fragments.browse;
 
 /**
  * Created by villev_h on 28/02/2017.

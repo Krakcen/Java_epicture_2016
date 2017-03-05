@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/content_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin">
+
+    <View
+            android:layout_width="fill_parent"
+            android:layout_height="0dp"
+            android:layout_weight="5"
+        android:id="@+id/view" />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical"
+        android:layout_gravity="bottom"
+        android:weightSum="100"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true">
+
+        <!-- 10% -->
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="0dp"
+            android:layout_weight="10"
+            android:orientation="horizontal"
+            android:tileMode="repeat" >
+            <TextView
+                android:id="@+id/imageBrowseText"
+                android:textColor="@color/bright_orange"
+                android:textStyle="bold"
+                android:typeface="monospace"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="Settings"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="0dp"
+            android:layout_weight="5"
+            android:orientation="horizontal"
+            android:tileMode="repeat" >
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="0dp"
+            android:layout_weight="5"
+            android:orientation="horizontal"
+            android:tileMode="repeat" >
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/imgur_logo"
+                />
+        </LinearLayout>
+
+
+        <!-- Imgur Login -->
+        <LinearLayout
+            android:id="@+id/imgurConnectBox"
+            android:layout_width="fill_parent"
+            android:layout_height="0dp"
+            android:layout_weight="25"
+            android:weightSum="1.5">
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:orientation="vertical"
+                android:layout_gravity="bottom"
+                android:weightSum="100"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentStart="true">
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="10">
+                    <Button
+                        android:id="@+id/imgurConnectButton"
+                        android:layout_height="wrap_content"
+                        android:layout_weight=".5"
+                        android:layout_width="0dip"
+                        android:text="Imgur Connect"
+                        />
+                </LinearLayout>
+
+                </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="0dp"
+            android:layout_weight="5"
+            android:orientation="horizontal"
+            android:tileMode="repeat" >
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="0dp"
+            android:layout_weight="5"
+            android:orientation="horizontal"
+            android:tileMode="repeat" >
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/flickr_logo"
+                />
+        </LinearLayout>
+
+        <!-- Flickr Login -->
+        <LinearLayout
+            android:id="@+id/flickrConnectBox"
+            android:layout_width="fill_parent"
+            android:layout_height="0dp"
+            android:layout_weight="25"
+            android:weightSum="1.5">
+
+
+            <LinearLayout
+                android:id="@+id/flickrConnectBoxTMP"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_gravity="bottom"
+                android:orientation="vertical"
+                android:visibility="visible"
+                android:weightSum="100">
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="10">
+
+                    <Button
+                        android:id="@+id/flickrConnectButton"
+                        android:layout_width="0dip"
+                        android:layout_height="wrap_content"
+                        android:layout_weight=".5"
+                        android:text="Flickr Connect" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/flickrConnectBoxUser"
+                android:layout_width="fill_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="92.80"
+                android:visibility="invisible"
+                android:weightSum="1.5">
+
+                <LinearLayout
+                    android:layout_width="0dip"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".1"
+                    android:textSize="12sp"></LinearLayout>
+
+                <ImageView
+                    android:id="@+id/userImageConnected"
+                    android:layout_width="0dip"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.30"
+                    android:textSize="12sp" />
+
+                <LinearLayout
+                    android:layout_width="0dip"
+                    android:layout_height="match_parent"
+                    android:layout_weight=".15"
+                    android:orientation="horizontal"
+                    android:textSize="12sp">
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dip"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.85"
+                    android:paddingBottom="25dp"
+                    android:paddingTop="25dp">
+                    <TextView
+                        android:id="@+id/userNameConnected"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+
+</RelativeLayout>

@@ -75,25 +75,6 @@
             </SearchView>
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="0dp"
-            android:layout_weight="20"
-            android:orientation="horizontal"
-            android:tileMode="repeat"
-            android:weightSum="1"
-            android:paddingRight="40dp"
-            android:paddingLeft="40dp">
-
-            <Button
-                android:id="@+id/btnChangeWebsite"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="Change Website"
-                android:background="@drawable/button_selector"
-                android:layout_margin="20dp" />
-        </LinearLayout>
-
         <View
             android:layout_width="fill_parent"
             android:layout_height="0dp"
