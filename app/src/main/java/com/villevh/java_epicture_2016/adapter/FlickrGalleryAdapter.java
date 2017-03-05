@@ -1,21 +1,16 @@
 package com.villevh.java_epicture_2016.adapter;
 
-import android.content.Context;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.GridView;
-import android.widget.ImageView;
-
-public class ImageAdapter extends BaseAdapter {
+/*public class FlickrGalleryAdapter extends BaseAdapter {
     private Context mContext;
+    private GridView photos;
 
-    public ImageAdapter(Context c) {
+    public FlickrGalleryAdapter(Context c, GridView g) {
         mContext = c;
+        photos = p;
     }
 
     public int getCount() {
-        return mThumbIds.length;
+        return (photos.size());
     }
 
     public Object getItem(int position) {
@@ -42,9 +37,4 @@ public class ImageAdapter extends BaseAdapter {
         //imageView.setImageResource(mThumbIds[position]);
         return imageView;
     }
-
-    // references to our images
-    private Integer[] mThumbIds = {
-
-    };
-}
+}*/
