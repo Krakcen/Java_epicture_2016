@@ -4,6 +4,8 @@
     <color name="colorPrimaryDark">#FF8C00</color>
     <color name="colorAccent">#CCCC</color>
 
+    <color name="white">#FFFFFF</color>
+    <color name="permGreen">#008000</color>
 
     <!-- button style -->
     <color name="orange_temp">#FF8C00</color>

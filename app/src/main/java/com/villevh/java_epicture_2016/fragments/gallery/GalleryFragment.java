@@ -34,7 +34,7 @@ public class GalleryFragment extends Fragment {
                 imgurGallery.setVisibility(View.GONE);
                 flickrGallery.setVisibility(View.VISIBLE);
                 errorFlickrGallery.setVisibility(View.GONE);
-                new FlickrUserGalleryTask(G.getF(), (MainActivity) this.getActivity(), flickrGallery);
+                new FlickrUserGalleryTask(getContext(), G.getF(), (MainActivity) this.getActivity(), flickrGallery, rootView).execute();
             }
             else {
                 errorImgurGallery.setVisibility(View.GONE);

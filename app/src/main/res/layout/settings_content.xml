@@ -169,7 +169,7 @@
                     android:textSize="12sp"></LinearLayout>
 
                 <ImageView
-                    android:id="@+id/userImageConnected"
+                    android:id="@+id/userFlickrImageConnected"
                     android:layout_width="0dip"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.30"

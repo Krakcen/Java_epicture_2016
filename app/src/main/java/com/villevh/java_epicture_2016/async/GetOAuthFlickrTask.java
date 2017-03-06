@@ -79,6 +79,6 @@ public class GetOAuthFlickrTask extends AsyncTask<Void, Integer, String> {
 
     @Override
     protected void onPostExecute(String result) {
-
+        int kek = 1;
     }
 }

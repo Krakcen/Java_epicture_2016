@@ -11,11 +11,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
 import com.googlecode.flickrjandroid.people.User;
+import com.koushikdutta.urlimageviewhelper.UrlImageViewHelper;
 import com.villevh.java_epicture_2016.Global;
 import com.villevh.java_epicture_2016.MainActivity;
 import com.villevh.java_epicture_2016.R;
@@ -74,14 +76,14 @@ public class SettingsFragment extends Fragment implements Handler.Callback{
             String json = preferences.getString("UserFlickr", "");
             User user = gson.fromJson(json, User.class);
 
-            //new OAuthFlickrTask(G.getF(), getActivity(), (MainActivity)getActivity()).execute();
-            //User hugo = G.getF().getPeopleInterface().findByUsername("MiniKraken");
-
             TextView textUserName = (TextView) this.rootViewF.findViewById(R.id.userNameConnected);
             View C = this.rootViewF.findViewById(R.id.flickrConnectBoxTMP);
             View D = this.rootViewF.findViewById(R.id.flickrConnectBoxUser);
 
-            String userInfo = "Real Name: " + user.getRealName() + "\nUser Name " + user.getUsername() + "\nPhoto Count: " + user.getPhotosCount();
+            ImageView userConnected = (ImageView) rootView.findViewById(R.id.userFlickrImageConnected);
+            UrlImageViewHelper.setUrlDrawable(userConnected, user.getBuddyIconUrl());
+
+            String userInfo = "Real Name: " + user.getRealName() + "\nUser Name " + user.getUsername();
             textUserName.setText(userInfo);
             C.setVisibility(View.GONE);
             D.setVisibility(View.VISIBLE);
