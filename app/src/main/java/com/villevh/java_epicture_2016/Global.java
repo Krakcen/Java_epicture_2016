@@ -6,6 +6,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.googlecode.flickrjandroid.Flickr;
+import com.googlecode.flickrjandroid.oauth.OAuthToken;
+import com.googlecode.flickrjandroid.people.User;
 import com.villevh.java_epicture_2016.fragments.AboutFragment;
 import com.villevh.java_epicture_2016.fragments.SettingsFragment;
 import com.villevh.java_epicture_2016.fragments.WelcomeFragment;
@@ -34,8 +36,35 @@ public class Global extends Application {
 
     private SettingsFragment settingsFragment;
     private int isSettingsFragmentInit;
+    private User flickrUser;
+    private User imgurUser;
+    private OAuthToken flickrToken;
 
     private ImageView welcomeEpitechLogo;
+
+    ////////////////////////////////////////////////////////////////////////////
+
+    public OAuthToken getFlickrToken() {
+        return (this.flickrToken);
+    }
+    public void setFlickrToken(OAuthToken o) {
+        this.flickrToken = o;
+    }
+
+    ////////////////////////////////////////////////////////////////////////////
+
+    public User getFlickrUser() {
+        return (this.flickrUser);
+    }
+    public void setFlickrUser(User f) {
+        this.flickrUser = f;
+    }
+    public User getImgurUser() {
+        return (this.imgurUser);
+    }
+    public void setImgurUser(User i) {
+        this.imgurUser = i;
+    }
 
     ////////////////////////////////////////////////////////////////////////////
 

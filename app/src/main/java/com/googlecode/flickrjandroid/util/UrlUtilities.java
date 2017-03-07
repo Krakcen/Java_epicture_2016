@@ -4,14 +4,14 @@
 
 package com.googlecode.flickrjandroid.util;
 
+import com.googlecode.flickrjandroid.Parameter;
+
 import java.io.UnsupportedEncodingException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.util.Iterator;
 import java.util.List;
-
-import com.googlecode.flickrjandroid.Parameter;
 
 /** @author Anthony Eden */
 public class UrlUtilities {
@@ -134,7 +134,7 @@ public class UrlUtilities {
             iconUrl = "https://farm"
             + iconFarm + ".static.flickr.com/"
             + iconServer + "/buddyicons/"
-            + id + ".jpg";
+            + id + "_l.jpg";
         }
         return iconUrl;
     }

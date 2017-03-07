@@ -60,9 +60,10 @@
             android:orientation="horizontal"
             android:tileMode="repeat" >
             <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/imgur_logo"
+                android:layout_marginBottom="10dp"
+                android:id="@+id/imgur_settings_logo"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 />
         </LinearLayout>
 
@@ -72,7 +73,7 @@
             android:id="@+id/imgurConnectBox"
             android:layout_width="fill_parent"
             android:layout_height="0dp"
-            android:layout_weight="25"
+            android:layout_weight="30"
             android:weightSum="1.5">
             <LinearLayout
                 android:layout_width="fill_parent"
@@ -92,6 +93,7 @@
                         android:layout_weight=".5"
                         android:layout_width="0dip"
                         android:text="Imgur Connect"
+                        android:background="@drawable/button_selector"
                         />
                 </LinearLayout>
 
@@ -113,9 +115,10 @@
             android:orientation="horizontal"
             android:tileMode="repeat" >
             <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/flickr_logo"
+                android:layout_marginBottom="10dp"
+                android:id="@+id/flickr_settings_logo"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 />
         </LinearLayout>
 
@@ -124,7 +127,7 @@
             android:id="@+id/flickrConnectBox"
             android:layout_width="fill_parent"
             android:layout_height="0dp"
-            android:layout_weight="25"
+            android:layout_weight="30"
             android:weightSum="1.5">
 
 
@@ -149,6 +152,7 @@
                         android:layout_width="0dip"
                         android:layout_height="wrap_content"
                         android:layout_weight=".5"
+                        android:background="@drawable/button_selector"
                         android:text="Flickr Connect" />
                 </LinearLayout>
 
@@ -159,7 +163,8 @@
                 android:layout_width="fill_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="92.80"
-                android:visibility="invisible"
+                android:background="@drawable/flickr_gallery_border"
+                android:visibility="gone"
                 android:weightSum="1.5">
 
                 <LinearLayout
@@ -172,16 +177,15 @@
                     android:id="@+id/userFlickrImageConnected"
                     android:layout_width="0dip"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.30"
-                    android:textSize="12sp" />
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="0.30" />
 
                 <LinearLayout
                     android:layout_width="0dip"
                     android:layout_height="match_parent"
                     android:layout_weight=".15"
                     android:orientation="horizontal"
-                    android:textSize="12sp">
-                </LinearLayout>
+                    android:textSize="12sp"></LinearLayout>
 
                 <LinearLayout
                     android:layout_width="0dip"
@@ -189,10 +193,13 @@
                     android:layout_weight="0.85"
                     android:paddingBottom="25dp"
                     android:paddingTop="25dp">
+
                     <TextView
                         android:id="@+id/userNameConnected"
                         android:layout_width="fill_parent"
-                        android:layout_height="fill_parent" />
+                        android:layout_height="fill_parent"
+                        android:textColor="@color/white"
+                        android:textStyle="bold" />
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>

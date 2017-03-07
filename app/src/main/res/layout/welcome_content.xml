@@ -80,10 +80,13 @@
             android:orientation="horizontal"
             android:tileMode="repeat" >
 
-            <ImageView
-                android:id="@+id/welcomeEpitechLogo"
-                android:layout_width="match_parent"
+            <Button
+                android:id="@+id/tipButton"
                 android:layout_height="wrap_content"
+                android:layout_weight=".5"
+                android:layout_width="0dip"
+                android:text="Show me a tip !"
+                android:background="@drawable/button_selector"
                 />
         </LinearLayout>
 

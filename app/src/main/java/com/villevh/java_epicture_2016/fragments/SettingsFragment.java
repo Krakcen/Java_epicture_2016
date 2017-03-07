@@ -1,10 +1,8 @@
 package com.villevh.java_epicture_2016.fragments;
 
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -15,7 +13,6 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.google.gson.Gson;
 import com.googlecode.flickrjandroid.people.User;
 import com.koushikdutta.urlimageviewhelper.UrlImageViewHelper;
 import com.villevh.java_epicture_2016.Global;
@@ -70,20 +67,33 @@ public class SettingsFragment extends Fragment implements Handler.Callback{
         this.containerF = container;
         Button btnFlickr = (Button) rootView.findViewById(R.id.flickrConnectButton);
 
+        ImageView flickrSettingsLogo = (ImageView) rootView.findViewById(R.id.flickr_settings_logo);
+        ImageView imgurSettingsLogo = (ImageView) rootView.findViewById(R.id.imgur_settings_logo);
+
+        /*Drawable flickrLogo = getResources().getDrawable(R.drawable.flickr_logo_menu);
+        Drawable imgurLogo = getResources().getDrawable(R.drawable.imgur_logo_menu);*/
+
+
+        flickrSettingsLogo.setImageResource(R.drawable.flickr_logo_menu);
+        imgurSettingsLogo.setImageResource(R.drawable.imgur_logo_menu);
+
+        View C = this.rootViewF.findViewById(R.id.flickrConnectBoxTMP);
+        View D = this.rootViewF.findViewById(R.id.flickrConnectBoxUser);
+
         if (G.getIsFlickrConnected() == 1) {
-            Gson gson = new Gson();
+            /*Gson gson = new Gson();
             SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
             String json = preferences.getString("UserFlickr", "");
-            User user = gson.fromJson(json, User.class);
+            User user = gson.fromJson(json, User.class);*/
+            User user = G.getFlickrUser();
 
             TextView textUserName = (TextView) this.rootViewF.findViewById(R.id.userNameConnected);
-            View C = this.rootViewF.findViewById(R.id.flickrConnectBoxTMP);
-            View D = this.rootViewF.findViewById(R.id.flickrConnectBoxUser);
 
             ImageView userConnected = (ImageView) rootView.findViewById(R.id.userFlickrImageConnected);
+            Log.d("buddy", user.getBuddyIconUrl());
             UrlImageViewHelper.setUrlDrawable(userConnected, user.getBuddyIconUrl());
 
-            String userInfo = "Real Name: " + user.getRealName() + "\nUser Name " + user.getUsername();
+            String userInfo = "Connected as\n\n" + user.getRealName() + "\n" + user.getUsername() + "\nPhotos: " + user.getPhotosCount();
             textUserName.setText(userInfo);
             C.setVisibility(View.GONE);
             D.setVisibility(View.VISIBLE);
@@ -98,7 +108,10 @@ public class SettingsFragment extends Fragment implements Handler.Callback{
                     initialFlickrOauth();
                 }
             });
+            C.setVisibility(View.VISIBLE);
+            D.setVisibility(View.GONE);
         }
+
         Button btnImgur = (Button) rootView.findViewById(R.id.imgurConnectButton);
         btnImgur.setOnClickListener(new View.OnClickListener() {
             @Override

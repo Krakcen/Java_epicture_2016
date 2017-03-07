@@ -55,7 +55,6 @@ public class OAuthFlickrTask extends AsyncTask<Void, Integer, String> {
             editor.apply();
 
             URL oauthUrl = f.getOAuthInterface().buildAuthenticationUrl(Permission.READ, oauthToken);
-
             return (oauthUrl.toString());
             //OAuthToken oauthToken = f.getOAuthInterface().getRequestToken(null);
         }

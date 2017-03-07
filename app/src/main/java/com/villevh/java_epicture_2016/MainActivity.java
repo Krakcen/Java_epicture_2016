@@ -17,13 +17,17 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 import com.google.android.gms.appindexing.Action;
 import com.google.android.gms.appindexing.AppIndex;
 import com.google.android.gms.appindexing.Thing;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.googlecode.flickrjandroid.Flickr;
-import com.googlecode.flickrjandroid.oauth.OAuthInterface;
+import com.googlecode.flickrjandroid.oauth.OAuth;
+import com.googlecode.flickrjandroid.oauth.OAuthToken;
+import com.googlecode.flickrjandroid.people.User;
+import com.villevh.java_epicture_2016.async.GetFlickrUserIdTask;
 import com.villevh.java_epicture_2016.async.GetOAuthFlickrTask;
 import com.villevh.java_epicture_2016.fragments.AboutFragment;
 import com.villevh.java_epicture_2016.fragments.SettingsFragment;
@@ -61,6 +65,8 @@ public class MainActivity extends AppCompatActivity
 
         G.setF(new Flickr(REST_CONSUMER_KEY, REST_CONSUMER_SECRET));
 
+        G.setImgurUser(null);
+        G.setFlickrUser(null);
         G.setIsSettingsFragmentInit(0);
         G.setCurrentWebsite("imgur");
         G.setLastW("imgur");
@@ -232,6 +238,36 @@ public class MainActivity extends AppCompatActivity
         client.disconnect();
     }
 
+    public void onUserDone(User user) {
+        Global G = ((Global) getApplicationContext());
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+
+        G.setFlickrUser(user);
+        if (G.getFlickrUser() == null || G.getFlickrToken() == null) {
+            Toast.makeText(this, "Couldn't Log into Flickr",
+                    Toast.LENGTH_LONG).show();
+        }
+        else {
+            //G.setFlickrUser(user);
+            //G.setFlickrToken(token);
+            G.setIsFlickrConnected(1);
+        }
+
+        transaction.replace(R.id.fragment_container_content, G.getSettingsFragment(), "SettingsF");
+        transaction.addToBackStack(null);
+        transaction.commit();
+    }
+
+    public void onAuthDone(OAuth oauth) {
+
+        Global G = ((Global) getApplicationContext());
+
+        User user = oauth.getUser();
+        new GetFlickrUserIdTask(G, user, this).execute();
+        OAuthToken token = oauth.getToken();
+        G.setFlickrToken(token);
+    }
+
     @Override
     public void onResume() {
         super.onResume();
@@ -256,15 +292,7 @@ public class MainActivity extends AppCompatActivity
                 if(!requestTokenSecret.equalsIgnoreCase(""))
                 {
                     Log.d("Secret Retrieved", requestTokenSecret);
-                    OAuthInterface oauthApi = G.getF().getOAuthInterface();
-                    new GetOAuthFlickrTask(G.getF(), this, oauthApi, oauthToken, oauthVerifier, requestTokenSecret).execute();
-
-                    //Flickr is now connected for the application lifecycle
-                    G.setIsFlickrConnected(1);
-
-                    transaction.replace(R.id.fragment_container_content, G.getSettingsFragment(), "SettingsF");
-                    transaction.addToBackStack(null);
-                    transaction.commit();
+                    new GetOAuthFlickrTask(G, this, oauthToken, oauthVerifier, requestTokenSecret).execute();
                 }
                 else {
                     Log.d("ERROR in Retrieval", "couldnt get secret token from SharedPreferences");

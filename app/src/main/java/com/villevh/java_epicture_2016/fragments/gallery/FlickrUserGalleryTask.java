@@ -1,9 +1,7 @@
 package com.villevh.java_epicture_2016.fragments.gallery;
 
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.os.AsyncTask;
-import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -17,7 +15,6 @@ import android.widget.ImageView;
 import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 
-import com.google.gson.Gson;
 import com.googlecode.flickrjandroid.Flickr;
 import com.googlecode.flickrjandroid.RequestContext;
 import com.googlecode.flickrjandroid.oauth.OAuth;
@@ -26,15 +23,14 @@ import com.googlecode.flickrjandroid.people.User;
 import com.googlecode.flickrjandroid.photos.Photo;
 import com.googlecode.flickrjandroid.photos.PhotoList;
 import com.koushikdutta.urlimageviewhelper.UrlImageViewHelper;
+import com.villevh.java_epicture_2016.Global;
 import com.villevh.java_epicture_2016.MainActivity;
 import com.villevh.java_epicture_2016.R;
-import com.villevh.java_epicture_2016.adapter.FlickrGalleryAdapter;
 
 import java.util.HashSet;
 import java.util.Set;
 
 import static android.content.Context.LAYOUT_INFLATER_SERVICE;
-
 
 public class FlickrUserGalleryTask extends AsyncTask<Void, Void, PhotoList> {
 
@@ -44,14 +40,16 @@ public class FlickrUserGalleryTask extends AsyncTask<Void, Void, PhotoList> {
     private GridView gridview;
     private RelativeLayout rView;
     private Context context;
+    private Global G;
 
     private PopupWindow popup;
 
     private PhotoList photos;
 
-    public FlickrUserGalleryTask(Context c, Flickr flicker, MainActivity mainActivity, GridView g, RelativeLayout rootView) {
+    public FlickrUserGalleryTask(Context c, Global G, MainActivity mainActivity, GridView g, RelativeLayout rootView) {
         super();
-        this.f = flicker;
+        this.G = G;
+        this.f = G.getF();
         this.mActivity = mainActivity;
         this.gridview = g;
         this.rView = rootView;
@@ -60,13 +58,8 @@ public class FlickrUserGalleryTask extends AsyncTask<Void, Void, PhotoList> {
 
     @Override
     protected PhotoList doInBackground(Void... params) {
-        //Get Token
-        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(mActivity);
-        Gson gson = new Gson();
-        String json = preferences.getString("FlickrToken", "");
-        OAuthToken token = gson.fromJson(json, OAuthToken.class);
-        json = preferences.getString("UserFlickr", "");
-        User user = gson.fromJson(json, User.class);
+        User user = G.getFlickrUser();
+        OAuthToken token = G.getFlickrToken();
 
         RequestContext requestContext = RequestContext.getRequestContext();
         OAuth auth = new OAuth();

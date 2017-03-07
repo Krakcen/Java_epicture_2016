@@ -1,4 +1,4 @@
-package com.villevh.java_epicture_2016.adapter;
+package com.villevh.java_epicture_2016.fragments.gallery;
 
 import android.content.Context;
 import android.graphics.Color;
@@ -50,7 +50,7 @@ public class FlickrGalleryAdapter extends BaseAdapter {
 
         View imageV;
 
-        imageV = inflater.inflate(R.layout.image_format, null);
+        imageV = inflater.inflate(R.layout.flickr_gallery_image_format, null);
 
         Log.d("size", String.valueOf(position));
         TextView title = (TextView) imageV.findViewById(R.id.grid_item_label_title);
@@ -78,7 +78,7 @@ public class FlickrGalleryAdapter extends BaseAdapter {
             String reportDate = df.format(d);
             date.setText(reportDate);
         }*/
-        if (photo.getTitle() == "") {
+        if (photo.getTitle().isEmpty()) {
             title.setTextColor(Color.RED);
             title.setText("No Name");
         }

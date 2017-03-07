@@ -29,11 +29,11 @@ public class BrowseFragment extends Fragment {
 
         if (G.getCurrentWebsite() == "flickr") {
             G.getImgBrowseText().setText(R.string.flickr_browse);
-            G.getImageLogo().setImageResource(R.drawable.flickr_logo);
+            G.getImageLogo().setImageResource(R.drawable.flickr_logo_medium);
         }
         else {
             G.getImgBrowseText().setText(R.string.imgur_browse);
-            G.getImageLogo().setImageResource(R.drawable.imgur_logo);
+            G.getImageLogo().setImageResource(R.drawable.imgur_logo_medium);
         }
         return rootView;
     }
