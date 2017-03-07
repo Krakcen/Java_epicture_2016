@@ -20,8 +20,6 @@ import com.villevh.java_epicture_2016.MainActivity;
 import com.villevh.java_epicture_2016.R;
 import com.villevh.java_epicture_2016.async.OAuthFlickrTask;
 
-import static android.content.ContentValues.TAG;
-
 
 public class SettingsFragment extends Fragment implements Handler.Callback{
 
@@ -56,6 +54,11 @@ public class SettingsFragment extends Fragment implements Handler.Callback{
         new OAuthFlickrTask(G.getF(), getActivity(), (MainActivity)getActivity()).execute();
     }
 
+    public void initialImgurOauth() {
+        Global G = ((Global) getActivity().getApplicationContext());
+        Log.d("imgur login", "ENTERED IMGUR AUTH PROCESS");
+    }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         RelativeLayout rootView = (RelativeLayout) inflater.inflate(R.layout.settings_content, container, false);
@@ -66,6 +69,7 @@ public class SettingsFragment extends Fragment implements Handler.Callback{
         this.inflaterF = inflater;
         this.containerF = container;
         Button btnFlickr = (Button) rootView.findViewById(R.id.flickrConnectButton);
+        Button btnImgur = (Button) rootView.findViewById(R.id.imgurConnectButton);
 
         ImageView flickrSettingsLogo = (ImageView) rootView.findViewById(R.id.flickr_settings_logo);
         ImageView imgurSettingsLogo = (ImageView) rootView.findViewById(R.id.imgur_settings_logo);
@@ -79,6 +83,9 @@ public class SettingsFragment extends Fragment implements Handler.Callback{
 
         View C = this.rootViewF.findViewById(R.id.flickrConnectBoxTMP);
         View D = this.rootViewF.findViewById(R.id.flickrConnectBoxUser);
+
+        View imgurTMP = this.rootViewF.findViewById(R.id.imgurConnectBoxTMP);
+        View imgurAuth = this.rootViewF.findViewById(R.id.imgurConnectBoxUser);
 
         if (G.getIsFlickrConnected() == 1) {
             /*Gson gson = new Gson();
@@ -111,14 +118,23 @@ public class SettingsFragment extends Fragment implements Handler.Callback{
             C.setVisibility(View.VISIBLE);
             D.setVisibility(View.GONE);
         }
+        if (G.getIsImgurConnected() == 1) {
+            imgurTMP.setVisibility(View.GONE);
+            imgurAuth.setVisibility(View.VISIBLE);
+        }
 
-        Button btnImgur = (Button) rootView.findViewById(R.id.imgurConnectButton);
-        btnImgur.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Log.d(TAG, "I clicked Imgur Connect Button");
-            }
-        });
+        else {
+            btnImgur.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                    //init OAuth
+                    initialImgurOauth();
+                }
+            });
+            imgurTMP.setVisibility(View.VISIBLE);
+            imgurAuth.setVisibility(View.GONE);
+        }
         return (rootView);
     }
 }

@@ -30,10 +30,10 @@ import com.googlecode.flickrjandroid.people.User;
 import com.villevh.java_epicture_2016.async.GetFlickrUserIdTask;
 import com.villevh.java_epicture_2016.async.GetOAuthFlickrTask;
 import com.villevh.java_epicture_2016.fragments.AboutFragment;
-import com.villevh.java_epicture_2016.fragments.SettingsFragment;
 import com.villevh.java_epicture_2016.fragments.WelcomeFragment;
 import com.villevh.java_epicture_2016.fragments.browse.BrowseFragment;
 import com.villevh.java_epicture_2016.fragments.gallery.GalleryFragment;
+import com.villevh.java_epicture_2016.fragments.settings.SettingsFragment;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -53,6 +53,7 @@ public class MainActivity extends AppCompatActivity
     private static final Logger logger = LoggerFactory.getLogger(MainActivity.class);
 
     public static final String CALLBACK_SCHEME = "flickrj-android-oauth";
+    public static final String CALLBACK_IMGUR = "imgur-callback";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -275,7 +276,6 @@ public class MainActivity extends AppCompatActivity
         Global G = ((Global) getApplicationContext());
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
 
-        Log.d("MainActivity", "RESUMED ACTIVITY");
         Intent intent = getIntent();
         String scheme = intent.getScheme();
 
@@ -299,5 +299,12 @@ public class MainActivity extends AppCompatActivity
                 }
             }
         }
+       /* else if (CALLBACK_IMGUR.equals(scheme)){
+            Log.d("Resume", "ELSE");
+            G.setIsImgurConnected(1);
+            transaction.replace(R.id.fragment_container_content, G.getSettingsFragment(), "SettingsF");
+            transaction.addToBackStack(null);
+            transaction.commit();
+        }*/
     }
 }

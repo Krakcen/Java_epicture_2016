@@ -1,6 +1,7 @@
 package com.villevh.java_epicture_2016;
 
 import android.app.Application;
+import android.content.Context;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -9,10 +10,10 @@ import com.googlecode.flickrjandroid.Flickr;
 import com.googlecode.flickrjandroid.oauth.OAuthToken;
 import com.googlecode.flickrjandroid.people.User;
 import com.villevh.java_epicture_2016.fragments.AboutFragment;
-import com.villevh.java_epicture_2016.fragments.SettingsFragment;
 import com.villevh.java_epicture_2016.fragments.WelcomeFragment;
 import com.villevh.java_epicture_2016.fragments.browse.BrowseFragment;
 import com.villevh.java_epicture_2016.fragments.gallery.GalleryFragment;
+import com.villevh.java_epicture_2016.fragments.settings.SettingsFragment;
 
 public class Global extends Application {
 
@@ -29,6 +30,8 @@ public class Global extends Application {
     private ImageView imageLogo;
 
     private BrowseFragment browseFragment;
+    private String input;
+
     private AboutFragment aboutFragment;
     private WelcomeFragment welcomeFragment;
 
@@ -41,6 +44,17 @@ public class Global extends Application {
     private OAuthToken flickrToken;
 
     private ImageView welcomeEpitechLogo;
+
+    private static Context context;
+
+    public void onCreate() {
+        super.onCreate();
+        Global.context = getApplicationContext();
+    }
+    public static Context getAppContext() {
+        return Global.context;
+    }
+
 
     ////////////////////////////////////////////////////////////////////////////
 
@@ -130,12 +144,24 @@ public class Global extends Application {
         this.imageLogo = i;
     }
 
+    ////////////////////////////////////////////////////////////////////////////
+
     public BrowseFragment getBrowseFragment() {
         return (this.browseFragment);
     }
     public void setBrowseFragment(BrowseFragment b) {
         this.browseFragment = b;
     }
+
+    public String getInput() {
+        return (this.input);
+    }
+    public void setInput(String s) {
+        this.input = s;
+    }
+
+    ////////////////////////////////////////////////////////////////////////////
+
 
     public AboutFragment getAboutFragment() {
         return (this.aboutFragment);
